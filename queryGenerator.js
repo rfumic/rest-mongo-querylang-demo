@@ -8,23 +8,40 @@ export default function generateQuery(queryString) {
     return JSON.stringify(result);
 }
 
+const operators = {
+    "=": "$eq",
+    "!=": "$ne",
+    "<": "$lt",
+    "<=": "$lte",
+    ">": "$gt",
+    ">=": "$gte",
+    "AND": "$and",
+    "NOT": "$not", // TODO
+    "OR": "$or",
+    "NOR": "$nor",
+}
+
 function parse(tokenTree) {
     let result = {};
     for (let [key, value] of Object.entries(tokenTree)) {
+        const operator = operators[key];
         switch (key) {
-            case "=": {
-                const right = is_number(value.right) ? parseFloat(value.right) : value.right;
-                result = { [value.left]: right };
-                break;
-            }
+            case "=":
+            case "<":
+            case "<=":
+            case ">=":
+            case "!=":
             case ">": {
-                result = { [value.left]: { $gt: parseFloat(value.right) } };
+                const right = is_number(value.right) ? parseFloat(value.right) : value.right;
+                result = { [value.left]: { [operator]: right } };
                 break;
             }
+            case "OR":
+            case "NOR":
             case "AND": {
                 const left = parse(value.left);
                 const right = parse(value.right);
-                result = { ...left, ...right }
+                result = { [operator]: [left, right] };
                 break;
             }
 
