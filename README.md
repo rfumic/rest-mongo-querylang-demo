@@ -7,37 +7,37 @@ By default uses mongo connection `mongodb://localhost:27017`
 Insert some demo data in `test` database with mongosh:
 ```sh
 db.students.insertMany([
-...   {
-        firstName: 'Ivan',
-        lastName: 'Ivanovic',
-        age: 20
-      },
-      {
-        firstName: 'Ivan',
-        lastName: 'Loremipsum',
-        age: 28
-      },
-      {
-        firstName: 'John',
-        lastName: 'Doe',
-        age: 22
-      },
-      {
-        firstName: 'Jane',
-        lastName: 'Smith',
-        age: 19
-      },
-      {
-        firstName: 'Alice',
-        lastName: 'Johnson',
-        age: 21
-      },
-      {
-        firstName: 'Bob',
-        lastName: 'Brown',
-        age: 23
-      }
-    ])
+        {
+            firstName: 'Ivan',
+            lastName: 'Ivanovic',
+            age: 20
+        },
+        {
+            firstName: 'Ivan',
+            lastName: 'Loremipsum',
+            age: 28
+        },
+        {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 22
+        },
+        {
+            firstName: 'Jane',
+            lastName: 'Smith',
+            age: 19
+        },
+        {
+            firstName: 'Alice',
+            lastName: 'Johnson',
+            age: 21
+        },
+        {
+            firstName: 'Bob',
+            lastName: 'Brown',
+            age: 23
+        }
+])
 
 ```
 2. Run demo server:
@@ -61,13 +61,13 @@ Returns:
 ```
 
 Currently supported operators:
-    - `=`
-    - `!=`
-    - `<`
-    - `<=`
-    - `>`
-    - `>=`
-    - `OR`
-    - `AND`
+* `=`
+* `!=`
+* `<`
+* `<=`
+* `>`
+* `>=`
+* `OR`
+* `AND`
 
 

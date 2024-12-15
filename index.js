@@ -25,11 +25,10 @@ MongoClient.connect(uri)
     .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 // Example API Endpoint
-app.get('/data', async (req, res) => {
+app.get('/students', async (req, res) => {
     try {
         const collection = db.collection('students');
         console.log('query',req.query.ql)
-       // const q = generateQuery("firstName = Ivan AND age > 20");
         const q = generateQuery(req.query.ql);
         console.log(q)
         const data = await collection.find(q).toArray();
